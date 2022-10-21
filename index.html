@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" />
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/73525b73cb.js" crossorigin="anonymous"></script>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <!-- local CSS -->
+    <link rel="stylesheet" text="text/css" href="./assets/css/style.css">
+    <title>Weather Dashboard API</title>
+</head>
+<body>
+    <!-- HEADER JUMBOTRON-->
+    <header>
+        <div class="jumbotron">
+            <!-- to display city name on search -->
+            <h1 id="site-title" class="display-4">THE WEATHER DASHBOARD</h1>
+            <!-- to display current date and time -->
+            <p id="date-time" class="lead"></p>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <div class="wrap-container">
+        <div id="content" class="container">
+            <div class="row">
+                <!-- Left Content - Search Box + History -->
+                <div id="left-content" class="col-md-4">
+                    <!-- search city input form -->
+                    <form id="city-search-form">
+                        <div class="form-inline">
+                            <label id="search-label" class="mx-sm-3 mb-2">Search for a City:</label>
+                            <input id="input-city-name" class="form-control" name="city-search" placeholder="ex. Westfield, NJ">
+                            <button id="search-btn" class="btn btn-primary" type="submit">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- search error/not found -->
+                    <div id="error"> search not found </div>
+
+                    <!-- history card -->
+                    <div id="hx-card" class="col-md-12 pt-4">
+                        <!-- previous searches -->
+                        <h6> recently searched cities: </h6>
+                        <ul id="search-hx-list" class="list-group list-group-flush"></ul>
+                        <!-- clear search history button -->
+                        <a id="clear-hx" href="#"></a>
+                    </div>
+                </div>
+
+                <!-- Right Content - weather content -->
+                <div id="right-content" class="col-md-8 pt-4">
+                    <!-- Current Weather display -->
+                    <div id="current-weather" class="border rounded-right"></div>
+                    <!-- 5-day Forecast -->
+                    <div id="weather-forecast" class="mt-5"></div>
+                </div>
+            </div>
+            <!-- row content end -->
+        </div> 
+        <!-- content wrap end -->
+    </div>
+
+
+    <!-- JavaScript + Bootstrap scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+    <!-- local JavaScript script -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
