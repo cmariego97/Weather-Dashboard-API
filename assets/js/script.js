@@ -62,7 +62,12 @@ function showForecast(data) {
     uvNow.innerText = `UV index: ${data.daily[0].uvi}`;
 
     // colors based on UV index no.
+    document.getElementById('current-uv').style.color = "";
     if (data.daily[0].uvi > 8) {
-        document.getElementById('current-uv')
+        document.getElementById('current-uv').style.color = "red";
+    } else if (2 < data.daily[0].uvi > 8) {
+        document.getElementById('current-uv').style.color = "yellow";
+    } else {
+        document.getElementById('current-uv').style.color = "green";
     }
 }
