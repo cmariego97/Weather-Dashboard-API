@@ -3,6 +3,11 @@
 // API key
 var API_KEY = "d91f911bcf2c0f925fb6535547a5ddc9";
 
+// display date
+function displayDate(data) {
+    return new Date(date * 1000).toLocaleDateString("en-US");
+}
+
 // search form variables
 var inputBox = document.getElementById('input-city-name');
 var searchBtn = document.getElementById('search-btn');
@@ -10,8 +15,44 @@ var searchBtn = document.getElementById('search-btn');
 // search city
 function userInput() {
     var cityName = inputBox.value;
-    getWeatherData(cityName);
+    getWeatherDataNow(cityName);
 }
+
+// creates search history button
+var searchHistoryBtn = document.createElement("button");
+
+function historyBtn() {
+    searchHistoryBtnContainer.innerHTML= "";
+    for (var i = searchArray.length - 1; i >= 0; i--) {
+        searchHistoryBtn.textContent = searchArray[i];
+        searchHistoryBtn.setAttribute = ("id", "search-hx-btn"); 
+        searchHistoryBtn.setAttribute = ("class", "history-btn btn bg-primary");
+        searchHistoryBtn.setAttribute = ("value", searchArray[i]);
+        
+        // on click - get weather data
+        searchHistoryBtn.onClick = historyBtnClick;
+        searchHistoryBtnContainer.append(searchHistoryBtn);
+    }
+}
+
+function historyBtnClick(e) {
+    getWeatherDataNow(e.target.value);
+}
+
+// displays search history
+function citySearchHistory(city) {
+    if (searchArray.indexOf(city) === -1) {
+        searchArray.push(city);
+    }
+
+    // local storage
+    localStorage.setItem("Search History", JSON.stringify(searchArray));
+    console.log(searchArray);
+    searchHistoryBtn();
+}
+
+// search button event listeners
+searchBtn.addEventListener("click", userInput);
 
 // weather data variables
 var dateToday = document.getElementById('current-date');
@@ -21,7 +62,7 @@ var windNow = document.getElementById('current-wind');
 var humidityNow = document.getElementById('current-humidity');
 
 // display weather data from city search
-function getWeatherData(cityName) {
+function getWeatherDataNow(cityName) {
     console.log(cityName);
     fetch(
         `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}&units=imperial`
@@ -30,7 +71,7 @@ function getWeatherData(cityName) {
         .then((data) => {
             console.log(data);
 
-            dateToday.innerText = `${cityName} ${timeConvert(data.dt)})`;
+            dateToday.innerText = `${cityName} ${displayDate(data.dt)})`;
             imgEl.src = `https://openweathermap.org/img/w/${data.weather[0].icon}.png`;
             tempNow.innerText = `${data.main.temp} °F`;
             windNow.innerText = `${data.wind.speed} MPH`;
@@ -56,7 +97,8 @@ function weatherForecast(lat, lon) {
 // display forecast data
 function showForecast(data) {
     // empty cards
-    cardDeck.innerHTML = "";
+    var weatherCardDeck = document.getElementById('weather-forecast-deck');
+    weatherCardDeck.innerHTML = "";
 
     // displays UV index
     uvNow.innerText = `UV index: ${data.daily[0].uvi}`;
@@ -69,5 +111,31 @@ function showForecast(data) {
         document.getElementById('current-uv').style.color = "yellow";
     } else {
         document.getElementById('current-uv').style.color = "green";
+    }
+
+    // create weather card for HTML
+    for (let i = 1; i <6; i++) {
+
+        // create weather card HTML variables 
+        var weatherCardContainer = document.createElement("div");
+        var weatherCardDate = document.createElement("h5");
+        var weatherCardImg = document.createElement("img");
+        var weatherCardTemp = document.createElement("p");
+        var weatherCardWind = document.createElement("p");
+        var weatherCardHumidity = document.createElement("p");
+
+        // create text content for weather card
+        weatherCardDate.textContent = `Date: ${displayDate(data.daily[i].dt)}`;
+        weatherCardImg.src = `https://openweathermap.org/img/w/${data.daily[i].weather[0].icon}.png`;
+        weatherCardTemp.textContent = `Temp: ${data.daily[i].temp.day} °F`;
+        weatherCardWind.textContent = `Wind Speed: ${data.daily[i].wind_speed} MPH`;
+        weatherCardHumidity.textContent = `Humidity: ${data.daily[i].humidity} %`;
+
+        weatherCardContainer.classList.add("card", "card-body");
+
+        // append text content to container
+        weatherCardContainer.append(weatherCardDate, weatherCardImg, weatherCardTemp, weatherCardWind, weatherCardHumidity);
+
+        weatherCardDeck.append(weatherCardContainer);
     }
 }
