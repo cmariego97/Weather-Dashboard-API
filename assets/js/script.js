@@ -1,7 +1,16 @@
 // OpenWeather One Call API key
 // var owmAPIkey = "68c768c77ec3722ab224406a53e005ab";
 // API key
-var API_KEY = "d91f911bcf2c0f925fb6535547a5ddc9";
+var API_KEY = "68c768c77ec3722ab224406a53e005ab";
+
+// when page loads
+onPageLoad()
+
+function onPageLoad() {
+    if (searchArray) {
+        historyBtn();
+    }
+}
 
 // display date
 function displayDate(data) {
