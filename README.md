@@ -3,11 +3,6 @@
 ## Description
 This weather application utilizes a server-side API to gather and display weather data via a city name search. This application serves the user so they may discover what the current weather conditions are in their location or any city in the world and also the future conditions. 
 
-- - -
-## Installation
-N/A
-
-- - -
 
 ## Usage
 
@@ -24,8 +19,6 @@ The weather for the day as well as the next 5 days will be generated.
 A list of previous city searches will be curated under the search form. Clicking on those searches will regenerate the weather data for that city again.
 
 ![search history](./assets/images/city-hx-search.gif)
-
-- - -
 
 ## Credits
 
