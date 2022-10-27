@@ -1,102 +1,168 @@
-/* website style elements  */
-
 /* root variables */
 :root {
-    --akaroa: #d3b7a1;
-    --voodoo: #473354;
-    --Martinique-shadow: 0px 3px 3px rgb(44,42,72, 0.5);
+    --pampas: #F5F2EF;
+    --indian-khaki: #C5A284; 
+    --pharlap: #AA858E;
+    --fountain-blue: #55C4BA;
+    --butterfly-bush: #5F5088;
+    --Martinique-shadow: 0px 3px 3px rgb(44,42,72, 0.2);
+    --Martinique-shadow2: 0px 3px 3px rgb(44,42,72, 0.5);
 }
 
-/* <== TYPOGRAPHY ==> */
-h1 {
-    font-size: 800px;
+* {
+    font-family: 'Atma', cursive, 'Josefin Sans', sans-serif, 'Londrina Solid', 'Nunito Sans';
+}
+
+h1{
+    font-size: 80px;
+    text-shadow: var(--Martinique-shadow2);
+}
+
+h5 {
+    color: var(--butterfly-bush);
+    font-size: 28px;
+    font-family: 'Londrina Solid', cursive;
+    text-shadow: var(--Martinique-shadow);
 }
 
 p {
-    font-size: 32px;
+    font-size: 18px;
+    font-family: 'Nunito Sans', sans-serif;
 }
 
-/* <== BODY STYLING ==> */
-body {
-    font-family: 'Archivo Narrow', sans-serif, 'Tenor Sans';
-}
 
-/* <== HEADER STYLING ==> */
+/* JUMBOTRON STYLING */
 header .jumbotron {
     padding: 5rem;
     background-size: cover;
-    background: var(--akaroa);
-    color: var(--voodoo);
+    background: var(--pharlap);
     text-align: center;
 }
 
 header h1 {
-    font-family: 'Tenor Sans', sans-serif;
+    margin: 0 auto;
+    font-family: 'Atma', cursive;
+    font-weight: 700;
     text-transform: uppercase;
-    text-shadow: var(--Martinique-shadow);
+    color: var(--butterfly-bush);
 }
 
 header p {
-    font-family: 'Archivo';
+    font-family: 'Josefin Sans', sans-serif;
 }
 
-/* <== LEFT CONTENT ==> */
-#left-content {
-    padding-top: 5px;
-    padding-bottom: 10px;
-    color: var(--voodoo)
+/* MAIN STYLING */
+.weather-container{
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto;
+    width: 65%;
+    justify-items: center;
 }
 
-/* search bar */
-#search-label {
+.navbar-brand{
+    font-size: 50px;
+}
+
+.input-container {
+    justify-content: center;
+    min-width: 150px;
+}
+
+.search-label{
     padding-top: 1rem;
     text-align: left;
-    font-family: 'Tenor Sans', sans-serif;
+    font-family: 'Archivo';
     font-size: 14px;
+    color: var(--butterfly-bush);
 }
 
-#input-citysearch {
-    width: 80%;
-    border-top-left-radius: 15px;
-    border-bottom-left-radius: 15px;
+.input-city-name {
+    width: 100%;
+    border-radius: 10px;
     box-shadow: var(--Martinique-shadow);
 }
 
-#search-btn {
-    width: 40px;
+.search-btn {
+    width: 100%;
     display: inline-block;
-    border-top-right-radius: 15px;
-    border-bottom-right-radius: 15px;
-    background: var(--voodoo);
+    border-radius: 5px;
+    color: var(--pampas);
+    text-transform: uppercase;
+    background: var(--pharlap);
     box-shadow: var(--Martinique-shadow);
 }
 
-/* error - only show when search not found */
-#error {
-    display: none;
-    color: var(--voodoo);
-    text-decoration: none;
-    font-size: .95em;
-    margin: .5em 0em 0em .5em;
+.search-btn:hover {
+    background: var(--butterfly-bush);
 }
 
-/* clear history/storage - show when there's a list of previous searches*/
-#hx-card {
-    display: none;
+.historyBtn {
+    border-radius: 5px;
+    color: var(--indian-khaki);
+    box-shadow: var(--Martinique-shadow);
 }
 
-#clear-hx {
-    color: var(--voodoo);
-    text-decoration: none;
-    font-size: .95em;
-    margin: .5em 0em 0em .5em;
+.date-today {
+    font-family: 'Londrina Solid', cursive;
+    text-transform: uppercase;
 }
 
-/* <== RIGHT CONTENT ==> */
+.card {
+    border-radius: 5px;
+    box-shadow: var(--Martinique-shadow);
+    min-width: 500px;
+    max-width: 100%;
+}
 
-/* weather card styles */
+.card-body {
+    margin: 10px;
+    min-width: 15%;
+}
 
-/* UV index color scheme */
+.card-body p span {
+    font-family: 'Josefin Sans', sans-serif;
+}
 
+.card-forecast {
+    background-color: var(--fountain-blue);
+}
 
-/* <== MEDIA QUERIES ==> */
+.card-data-container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card-img-content {
+    justify-items: center;
+}
+
+.card-img-content img {
+    min-width: 100px;
+    height: auto;
+}
+
+.card-data-info {
+    font-size: 20px;
+    color: var(--pampas);
+    text-shadow: var(--Martinique-shadow);
+    text-align: left;
+}
+
+.card-deck {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-data{
+    width: 100%;
+    justify-items: center;
+}
+.historyBtn{
+    margin-top: 10px;
+    width: 100%;
+}

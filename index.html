@@ -12,17 +12,21 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Atma:wght@400;700&family=Josefin+Sans:wght@300;400&family=Londrina+Solid:wght@100;400;900&family=Nunito+Sans:ital,wght@0,200;0,400;0,700;1,200;1,400;1,700&display=swap" rel="stylesheet">
     <!-- CSS stylesheet link -->
     <link rel="stylesheet" text="text/css" href="./assets/css/style.css">
     <title>Weather Dashboard API</title>
 </head>
+
 <body>
-    <!-- HEADER JUMBOTRON-->
+    <!-- HEADER -->
     <header>
-        <div class="jumbotron">
+        <!-- nav bar w/ title -->
+        <div class="jumbotron navbar">
             <!-- display city name on search -->
-            <h1 id="site-title" class="display-4">THE WEATHER DASHBOARD</h1>
+            <h1 id="site-title" class="site-title">
+                THE WEATHER DASHBOARD
+            </h1>
             <!-- display current date and time -->
             <p id="date-time" class="lead"></p>
         </div>
@@ -30,73 +34,61 @@
 
     <!-- MAIN -->
     <main>
+        <!-- weather container -->
         <div class="weather-container">
-            <div id="content" class="container">
-                <div class="row">
-                    
-                    <!-- Left Content - Search Box + History -->
-                    <div class="search-field col-md-4">
-                        <!-- search city input form -->
-                        <form id="city-search-form">
-                            <div class="form-inline">
-                                <label id="search-label class="mx-sm-3 mb-2">Search for a City:</label>
-                                <!-- input city search -->
-                                <input id="input-city-name" class="form-control" name="city-search" placeholder="ex. Westfield, NJ">
-                                <button id="search-btn" class="search-button btn btn-primary" type="submit">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                            </div>
-                        </form>
 
-                        <!-- search error/not found -->
-                        <div id="error">search not found</div>
+            <!-- search form and history container -->
+            <div class="input-container search-history mx-3">
+                <h1 class="search-label">
+                    Input City Name:
+                </h1>
+                <!-- input city search -->
+                <input class="input-city-name p-3" type="text" placeholder="ex. New Brunswick">
+                <button class="search-btn my-2 p-1">
+                    <i class="fa-solid fa-magnifying-glass pr-2"></i>
+                    Search
+                </button>
+                <div id="searchHx"></div>
+            </div>
 
-                        <!-- search history displays here -->
-                        <div id="searchHistory"></div>
-                    </div>
+            <!-- weather data content -->
+            <div class="weather-data mx-4">
+                <!-- today's forecast, large card-->
+                <div class="card card-date-today">
+                    <div class="card-body">
+                        <h5 class="card-date">
+                            <span class="date-today">
+                                Location & Date
+                            </span>
+                            <img class="current-image" src="">
+                        </h5>
 
-                    <!-- Right Content - weather cards -->
-                    <div class="weather-content col-md-8 pt-4">
-
-                        <!-- today's weather card -->
-                        <div class="weather-card current-day">
-                            <div class="card-body">
-                                <h5 class="card-date">
-                                    <span id="current-date" class="current-date">
-                                        Location & Date
-                                    </span>
-                                    <img class="image" src="">
-                                </h5>
-                                <!-- temperature -->
-                                <p class="card-temp">
-                                    Temp:
-                                    <span id="current-temp" class="temp-now"></span>
-                                </p>
-                                <!-- wind -->
-                                <p class="card-wind">
-                                    Wind:
-                                    <span id="current-wind" class="wind-now"></span>
-                                </p>
-                                <!-- humidity -->
-                                <p class="card-humidity">
-                                    Humidity:
-                                    <span id="current-humidity" class="humidity-now"></span>
-                                </p>
-                                <!-- uv index -->
-                                <p class="card-uv-index">
-                                    <span id="current-uv" class="uv-now"></span>
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- weather card for the rest of the week -->
-                        <div id="weather-forecast-deck" class=" temp-cards"></div>
+                        <!-- card content values -->
+                        <p class="card-temp">
+                            Temp: 
+                            <span class="current-temp"></span>
+                        </p>
+                        <p class="card-wind">
+                            Wind: 
+                            <span class="current-wind"></span>
+                        </p>
+                        <p class="card-humidity">
+                            Humidity: 
+                            <span class="current-humidity"></span>
+                        </p>
+                        <p class="uv-index">
+                            <span class="current-uv" id="current-uv"></span>
+                        </p>
 
                     </div>
                 </div>
-                <!-- row content end -->
-            </div> 
-            <!-- content wrap end -->
+
+                <!-- 5-day Weather Forecast here (from JavaScript) -->
+                <div class="card-deck temp-cards"></div>
+
+            </div>
+
+        <!-- weather container ends -->
         </div>
     </main>
 
