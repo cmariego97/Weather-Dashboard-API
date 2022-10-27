@@ -6,7 +6,7 @@ This weather application utilizes a server-side API to gather and display weathe
 
 ## Usage
 
-To use this application, visit this [♡ page ♡]()
+To use this application, visit this [♡ page ♡](https://cmariego97.github.io/Weather-Dashboard-API/)
 
 Featured is a mock-up of the weather dashboard application:
 ![weather dashboard mock-up](./assets/images/weater-dashboard-mockup.jpg)
